@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Выбери блюдо, Котенок!</title>
+    <link rel="icon" type="image/png" href="logo1.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Логотип">
+        </div>
+        <div class="header-info">
+            <span class="name">Котенок</span>
+            <span class="balance">Баланс: <span id="money">100</span> ₽</span>
+            <a href="cart.html" class="cart-icon">
+                <img src="cart-icon.png" alt="Корзина">
+                <span id="cart-count">0</span>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <div class="dish-card">
+            <img src="dish1.jpg" alt="Блюдо 1">
+            <h3>Блинчики</h3>
+            <p>Стоимость: 50 ₽</p>
+            <button onclick="addToCart('Блинчики', 50)">Добавить в корзину</button>
+        </div>
+
+        <div class="dish-card">
+            <img src="dish2.jpg" alt="Блюдо 2">
+            <h3>Яичница</h3>
+            <p>Стоимость: 80 ₽</p>
+            <button onclick="addToCart('Яичница', 80)">Добавить в корзину</button>
+        </div>
+
+        <div class="dish-card">
+            <img src="dish3.jpg" alt="Блюдо 3">
+            <h3>Торт</h3>
+            <p>Стоимость: 30 ₽</p>
+            <button onclick="addToCart('Торт', 30)">Добавить в корзину</button>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
