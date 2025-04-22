@@ -6,8 +6,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+        with:
+          fetch-depth: 0  # Полная история коммитов!
+
       - name: Push to GitLab
         run: |
           git remote add gitlab https://${{ secrets.GITLAB_USERNAME }}:${{ secrets.GITLAB_TOKEN }}@gitlab.skillbox.ru/radmir_fazlyev/food_chooser.git
-          git push --force gitlab HEAD:Develop
+          git push gitlab HEAD:Develop
