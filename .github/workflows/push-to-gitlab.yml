@@ -1,0 +1,13 @@
+name: Push to GitLab
+on: [push]
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Push to GitLab
+        run: |
+          git remote add gitlab https://${{ secrets.GITLAB_USERNAME }}:${{ secrets.GITLAB_TOKEN }}@gitlab.skillbox.ru/radmir_fazlyev/food_chooser.git
+          git push --force gitlab HEAD:Develop
