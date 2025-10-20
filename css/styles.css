@@ -1,5 +1,24 @@
+.dish-card {
+    /* ...existing styles... */
+    animation: cardAppear 0.38s cubic-bezier(.23,1.12,.62,1.01);
+}
+@keyframes cardAppear {
+    from { opacity: 0; transform: translateY(30px) scale(0.97); }
+    to { opacity: 1; transform: none; }
+}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.login-title {
+    text-align: center;
+    margin: 0 0 24px 0;
+    font-size: 2.1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #222;
+    font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-top: 32px;
+}
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
@@ -162,4 +181,181 @@ main {
 
 .cart-page button:hover {
     background-color: #ff4a3d;
+}
+
+/* Auth link / user badge */
+#auth-link {
+    text-decoration: none;
+    color: #333;
+    background: linear-gradient(90deg,#fff,#fff);
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    transition: background-color 0.15s, box-shadow 0.15s;
+}
+
+#auth-link:hover {
+    background-color: #f3f3f3;
+}
+
+/* Remove button in cart */
+.remove-item {
+    margin-left: 12px;
+    background: transparent;
+    color: #ff6f61;
+    border: 1px solid #ff6f61;
+    padding: 6px 10px;
+    border-radius: 6px;
+    /* Remove button in cart */
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.remove-item:hover {
+    background: #ffefed;
+}
+
+/* Cart actions row */
+.cart-actions {
+    display: flex;
+    gap: 10px;
+}
+
+    /* Modal animation */
+    #modal-overlay {
+        animation: fadeIn 0.18s;
+    }
+    #modal-window {
+        animation: popIn 0.22s;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; } to { opacity: 1; }
+    }
+    @keyframes popIn {
+        from { transform: scale(0.92); opacity: 0.7; } to { transform: scale(1); opacity: 1; }
+    }
+
+    /* Toast notifications */
+    #toast-container {
+        position: fixed;
+        top: 24px;
+        right: 24px;
+        z-index: 3000;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        pointer-events: none;
+    }
+    .toast {
+        min-width: 180px;
+        max-width: 340px;
+        background: var(--card, #fff);
+        color: var(--text, #333);
+        border-radius: 8px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+        padding: 14px 22px;
+        font-size: 16px;
+        opacity: 0.97;
+        pointer-events: auto;
+        animation: toastIn 0.22s;
+    }
+    .toast-success { border-left: 5px solid var(--primary, #ff6f61); }
+    .toast-error { border-left: 5px solid var(--danger, #b00020); }
+    @keyframes toastIn {
+        from { transform: translateY(-20px); opacity: 0; } to { transform: none; opacity: 0.97; }
+    }
+
+    /* Theme switcher */
+    .theme-switch {
+        margin-left: 18px;
+        cursor: pointer;
+        font-size: 18px;
+        background: none;
+        border: none;
+        color: var(--primary, #ff6f61);
+        transition: color 0.18s;
+    }
+    .theme-switch:hover {
+        color: var(--primary-dark, #ff4a3d);
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+        main { flex-direction: column; align-items: center; }
+        .dish-card { width: 98vw; max-width: 340px; }
+        .cart-page { max-width: 98vw; }
+        header { flex-direction: column; gap: 10px; }
+    }
+.cart-actions button {
+    width: auto;
+    padding: 10px 16px;
+}
+
+/* Login page */
+.login-page {
+    max-width: 420px;
+    margin: 60px auto;
+    padding: 26px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+}
+
+.login-page form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.login-page label {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    color: #444;
+}
+
+.login-page input {
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.login-page button[type="submit"] {
+    background-color: #2b8aef;
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.login-page button[type="submit"]:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.login-error {
+    color: #b00020;
+    font-size: 14px;
+}
+
+.btn-loading {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.spinner {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: rgba(255,255,255,0.9);
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
 }

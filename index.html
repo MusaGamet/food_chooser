@@ -3,48 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Выбери блюдо, Котенок!</title>
+    <title>Выбери блюдо</title>
     <link rel="icon" type="image/png" href="images/logo1.png">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <header>
         <div class="logo">
-            <img src="images/logo.png" alt="Логотип">
+            <a href="index.html"><img src="images/logo.png" alt="Логотип"></a>
         </div>
         <div class="header-info">
-            <span class="name">Котенок</span>
+            <!-- <span class="name">Котенок</span> -->
             <span class="balance">Баланс: <span id="money">100</span> ₽</span>
             <a href="cart.html" class="cart-icon">
                 <img src="images/cart-icon.png" alt="Корзина">
                 <span id="cart-count">0</span>
             </a>
+            <a id="auth-link" href="login.html">Войти</a>
+            <!-- theme switcher removed -->
+            <span id="user-avatar" class="user-avatar" style="display:none"></span>
         </div>
     </header>
+<!-- Toast notifications -->
+<div id="toast-container"></div>
 
     <main>
-        <div class="dish-card">
-            <img src="images/dish1.jpg" alt="Блюдо 1">
-            <h3>Блинчики</h3>
-            <p>Стоимость: 50 ₽</p>
-            <button onclick="addToCart('Блинчики', 50)">Добавить в корзину</button>
+        <!-- Админ-панель для добавления блюда -->
+        <div id="admin-dish-panel" style="display:none;flex-direction:column;gap:12px;margin-bottom:24px;max-width:400px;">
+            <h3>Добавить блюдо</h3>
+            <form id="add-dish-form">
+                <input type="text" id="dish-name" placeholder="Название" required style="margin-bottom:8px;">
+                <input type="number" id="dish-cost" placeholder="Стоимость" required style="margin-bottom:8px;">
+                <input type="text" id="dish-image" placeholder="URL картинки (опционально)" style="margin-bottom:8px;">
+                <button type="submit">Добавить блюдо</button>
+            </form>
+            <hr style="margin:18px 0;">
+            <h3>Изменить баланс Kamila</h3>
+            <form id="set-balance-kamila-form" style="display:flex;gap:8px;align-items:center;">
+                <input type="number" id="kamila-balance" placeholder="Новый баланс" min="0" style="margin-bottom:0;">
+                <button type="submit">Установить</button>
+            </form>
+            <div id="kamila-balance-status" style="font-size:14px;color:#2b8aef;margin-top:6px;"></div>
         </div>
 
-        <div class="dish-card">
-            <img src="images/dish2.jpg" alt="Блюдо 2">
-            <h3>Яичница</h3>
-            <p>Стоимость: 80 ₽</p>
-            <button onclick="addToCart('Яичница', 80)">Добавить в корзину</button>
-        </div>
-
-        <div class="dish-card">
-            <img src="images/dish3.jpg" alt="Блюдо 3">
-            <h3>Торт</h3>
-            <p>Стоимость: 30 ₽</p>
-            <button onclick="addToCart('Торт', 30)">Добавить в корзину</button>
-        </div>
+        <div id="dishes-list" style="display:flex;flex-wrap:wrap;gap:20px;"></div>
     </main>
 
     <script src="js/script.js"></script>
+</body>
+
+<!-- Модальное окно -->
+<div id="modal-overlay" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.25);z-index:2000;justify-content:center;align-items:center;">
+    <div id="modal-window" style="background:#fff;padding:24px 20px;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.18);min-width:280px;max-width:90vw;">
+        <div id="modal-message" style="margin-bottom:18px;font-size:17px;color:#333;"></div>
+        <div id="modal-actions" style="display:flex;gap:12px;justify-content:flex-end;"></div>
+    </div>
+</div>
 </body>
 </html>

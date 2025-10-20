@@ -1,0 +1,25 @@
+# Node
+node_modules/
+npm-debug.log
+package-lock.json
+
+# Database
+food_chooser.db
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# VSCode
+.vscode/
+
+# Logs
+logs/
+*.log
+
+# Build / temp
+dist/
+.tmp/
+
+# Secret env
+.env
